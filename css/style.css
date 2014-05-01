@@ -1,0 +1,128 @@
+html{
+	background: url(../images/bg.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#navigation{
+	position:fixed;
+	top:100px;
+	width:100%;
+	margin-left: auto;
+	margin-right: auto;
+	height:45px;
+	text-align:center;
+	padding-top:25px;
+	min-width: 800px;
+}
+
+#navigation a{
+	color:black;
+	font-size:20px;
+	font-family: 'Raleway', sans-serif;
+	text-decoration:none;
+	background: rgba(255,255,255,0.82);
+	padding: 15px;
+	margin:20px;
+}
+
+#navigation a:hover{
+	color:red;
+}
+
+#mecText{
+	position: fixed;
+	top:250px;
+	bottom:180px;
+	font-family: 'Raleway', sans-serif;
+	font-size: 72px;
+	text-align: center;
+	margin: 200px 0 0 30px;
+	min-width: 500px;
+	cursor:default;
+}
+
+#mecTexth1{
+	width: 660px;
+	background: rgba(255,255,255,0.82);
+	margin-bottom: 15px;
+	padding: 15px;
+	color: red;
+	/* text-shadow: 1px 1px 1px gray; */
+}
+
+#mecTexth2{
+	width: 290px;
+	background: rgba(255,255,255,0.82);
+	padding: 15px;
+	color: red;
+	/* text-shadow: 1px 1px 1px gray; */
+	margin-bottom: 120px;
+}
+
+#down{
+	position: absolute;
+	bottom: 0px;
+	color: white;
+	width: 100%;
+	font-family: monospace;
+	font-size: 60px;
+	text-align: center;
+	background: rgba(0,0,0,0.45);
+	cursor:pointer;
+}
+
+#mission{
+	position: absolute;
+	bottom:0px;
+	margin-bottom:-350px;
+	width:100%;
+	height:350px;
+	background: rgba(255,255,255,0.92);
+	min-width: 500px;
+	overflow: hidden;
+	cursor: default;
+}
+
+#missionh1{
+	position: relative;
+	font-family: 'Raleway', sans-serif;
+	font-size: 48px;
+	padding: 15px;
+	background: rgba(0,0,0,0.23);
+	width: 300px;
+	top: 31px;
+	margin-left: 30px;
+	text-align: center;
+}
+
+#redText{
+	color:red;
+}
+
+#mission p{
+	font-family: 'Raleway', sans-serif;
+	font-size: 20px;
+	line-height: 50px;
+	padding: 60px 30px 0 30px;
+}
+
+#footer{
+	position: absolute;
+	bottom: 0px;
+	margin-bottom: -430px;
+	background: rgba(0,0,0,0.45);
+	width: 100%;
+	height:80px;
+}
+
+#footer p{
+	font-family: 'Raleway', sans-serif;
+	font-size: 16px;
+	color:white;
+	padding-top: 35px;
+	text-align: center;
+	cursor: pointer;
+}
