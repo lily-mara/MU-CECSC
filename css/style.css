@@ -32,7 +32,7 @@ html{
     color:red;
 }
 
-#frontPageTitleBox{
+.frontPageTitleBox{
     position: fixed;
     top:250px;
     bottom:180px;
