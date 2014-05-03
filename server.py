@@ -18,15 +18,23 @@ class MainHandler(tornado.web.RequestHandler):
 	def get(self, page='index.html'):
 		page_name = safe_get(page.split('.'), 0)
 		
-		print(safe_get(pages, page_name))
+		page_content = safe_get(pages, page_name)
+
+		if page_content is None:
+			self.clear()
+			self.set_status(404)
+			self.finish("<html><body>That page does not exist.</body></html>")
+			return
 		
 		options = {}
 		self.render(page, **options)
 		
-def safe_get(col, ind, default=''):
+def safe_get(col, ind, default=None):
 	try:
 		return col[ind]
 	except IndexError:
+		return default
+	except KeyError:
 		return default
 
 handlers = [
