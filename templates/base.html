@@ -21,8 +21,9 @@
 
     <div id="mainBody">
       <div id="navigation" class="animated fadeInDown">
-	{% for i in page_list %}
-	<a href="{{ i }}">{{ i }}</a>
+	<a href="index.html">home</a>
+	{% for page in page_list %}
+	<a href="{{ page['link'] }}">{{ page['name'] }}</a>
 	{% end %}
 	<a href="mailto:stuco@miamicec.org">contact</a> 
       </div>

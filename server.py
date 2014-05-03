@@ -17,29 +17,34 @@ def load_pages():
 		file_name, extension = os.path.splitext(basename)
 		with open(file_path) as json_file:
 			pages[file_name] = json.load(json_file)
-	page_names = ', '.join(list(pages.keys()))
-	print('Loaded pages: \'{}\''.format(page_names))
+	page_names = "'" + "', '".join(list(pages.keys())) + "'"
+	print('Loaded pages: {}'.format(page_names))
 
 class MainHandler(tornado.web.RequestHandler):
 	def get(self, page='index.html'):
 		page_name = safe_get(page.split('.'), 0)
 		
-		page_content = safe_get(pages, page_name)
+		page_info = safe_get(pages, page_name)
+		page_content = safe_get(page_info, 'content')
 
-		if page_content is None:
+		if page_content is None and page != 'index.html':
 			self.clear()
 			self.set_status(404)
 			self.finish("<html><body>That page does not exist.</body></html>")
 			return
+			
+		print(json.dumps(pages, indent = ' ' * 4))
 		
 		options = {
-				'content': page_content
+				'content': page_content,
+				'page_list': [pages[i]['title'] for i in pages]
 		}
 		
 		if page == 'index.html':
 			self.render(page, **options)
-		else:
-			self.render('contents.html', **options)
+			return
+
+		self.render('contents.html', **options)
 				
 		
 def safe_get(col, ind, default=None):
@@ -48,6 +53,8 @@ def safe_get(col, ind, default=None):
 	except IndexError:
 		return default
 	except KeyError:
+		return default
+	except TypeError:
 		return default
 
 handlers = [
