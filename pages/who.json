@@ -12,6 +12,17 @@
 	{
 	    "title": "Committed",
 	    "content": "We are working hard to make sure that Miami's Engineering programs can operate at their fullest potential, and be of the most benefit to students."
+	},
+
+	{
+	    "title": "Scholarly",
+	    "content": "Every member of CECSC is committed to not just their own scholarly excellence, but to improving others through knowledge."
+	},
+
+	{
+	    "title": "Representatives",
+	    "content": "Every department of the Engineering school is represented. CSE, ECE, MME, CPB, EGM are all present here."
 	}
+
     ]
 }
