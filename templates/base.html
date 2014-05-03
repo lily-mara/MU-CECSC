@@ -1,41 +1,41 @@
 <!DOCTYPE html>
 <html lang=”EN” dir=”ltr” xmlns=”http://www.w3.org/1999/xhtml”>
-<head>
-<meta http-equiv=”content-type” content=”text/xml; charset=utf-8” />
-	<title>Miami Engineering Council | Miami University</title>
-	<meta name="description" content="The Miami Engineering Council was founded in 2012 by students at Miami University who are dedicated to promoting engineering and uniting students together.">
-	
-	<link rel="stylesheet" type="text/css" href="{{ static_url('css/reset.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ static_url('css/style.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ static_url('css/animate.css') }}">
-	<link href='http://fonts.googleapis.com/css?family=Raleway:200' rel='stylesheet' type='text/css'>
-	<link rel="shortcut icon" type="image/x-icon" href="{{ static_url('images/favicon.png') }}" />
+  <head>
+    <meta http-equiv=”content-type” content=”text/xml; charset=utf-8” />
+    <title>Miami Engineering Council | Miami University</title>
+    <meta name="description" content="The Miami Engineering Council was founded in 2012 by students at Miami University who are dedicated to promoting engineering and uniting students together.">
+    
+    <link rel="stylesheet" type="text/css" href="{{ static_url('css/reset.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ static_url('css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ static_url('css/animate.css') }}">
+    <link href='http://fonts.googleapis.com/css?family=Raleway:200' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ static_url('images/favicon.png') }}" />
 
 
-	
-	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
-	<script type="text/javascript" src="{{ static_url('js/myjs.js') }}"></script>      
-	
-</head>
-<body>
+    
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
+    <script type="text/javascript" src="{{ static_url('js/myjs.js') }}"></script>      
+    
+  </head>
+  <body>
 
-	<div id="mainBody">
-		<div id="navigation" class="animated fadeInDown">
-		  {% for i in page_list %}
-			<a href="{{ i }}">{{ i }}</a>
-		  {% end %}
-			<a href="mailto:stuco@miamicec.org">contact</a> 
-		</div>
+    <div id="mainBody">
+      <div id="navigation" class="animated fadeInDown">
+	{% for i in page_list %}
+	<a href="{{ i }}">{{ i }}</a>
+	{% end %}
+	<a href="mailto:stuco@miamicec.org">contact</a> 
+      </div>
 
-	{% block main_bocks %}{% end %}
+      {% block main_bocks %}{% end %}
 
-	</div>
-	
-	<div id="footer">
-		<p>&copy; 2013 Miami Engineering Council</p>
-	</div>
+    </div>
+    
+    <div id="footer">
+      <p>&copy; 2013 Miami Engineering Council</p>
+    </div>
 
 
 
-</body>
+  </body>
 </html>
