@@ -21,10 +21,9 @@
 
 	<div id="mainBody">
 		<div id="navigation" class="animated fadeInDown">
-			<a href="index.html">home</a>
-			<a href="about.html">what we do</a>
-			<a href="who.html">who we are</a>
-			<a href="https://twitter.com/MiamiUniversity"target="new">twitter</a>
+		  {% for i in page_list %}
+			<a href="{{ i }}">{{ i }}</a>
+		  {% end %}
 			<a href="mailto:stuco@miamicec.org">contact</a> 
 		</div>
 
