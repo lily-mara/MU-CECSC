@@ -8,14 +8,13 @@ html{
 
 #navigation{
     position:fixed;
-    top:100px;
+    top:10%;
     width:100%;
     margin-left: auto;
     margin-right: auto;
     height:45px;
     text-align:center;
     padding-top:25px;
-    min-width: 800px;
 }
 
 #navigation a{
@@ -60,7 +59,7 @@ html{
     position: relative;
     width: 1200px;
     height: 360px;
-    margin:350px auto 50px auto;
+    margin: 13% auto 50px auto;
     cursor:default;
 }
 
@@ -158,7 +157,7 @@ p.boxText{
 #footer{
     position: absolute;
     bottom: 0px;
-    margin-bottom: -430px;
+    margin-bottom: -10%;
     background: rgba(0,0,0,0.45);
     width: 100%;
     height:80px;
