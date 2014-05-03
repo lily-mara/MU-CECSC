@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 
 {% block main_bocks %}
+
+<div class="pageTitleBox animated fadeInDown">
+<h1 class="pageTitle">Who <span id="redText">we</span> are</h1>
+</div>
+
 <div id="container" class="animated fadeInDown">
   {% for box in content %}
   <div class="boxes">
@@ -11,3 +16,5 @@
   {% end %}
 </div>
 {% end %}
+
+{% block footer_info %}id="contentFooter"{% end %}
