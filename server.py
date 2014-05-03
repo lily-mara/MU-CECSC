@@ -32,7 +32,10 @@ class MainHandler(tornado.web.RequestHandler):
 			self.finish("<html><body>That page does not exist.</body></html>")
 			return
 		
-		options = {}
+		options = {
+				'content': page_content
+		}
+		
 		self.render(page, **options)
 		
 def safe_get(col, ind, default=None):
