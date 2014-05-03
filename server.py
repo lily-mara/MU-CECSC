@@ -53,8 +53,6 @@ class MainHandler(tornado.web.RequestHandler):
 			self.finish('<html><body>That page does not exist.</body></html>')
 			return
 			
-		print(json.dumps(pages, indent = ' ' * 4))
-		
 		options = {
 				'content': page_content,
 				'title': title,
