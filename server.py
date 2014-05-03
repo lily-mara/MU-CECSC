@@ -43,6 +43,10 @@ class MainHandler(tornado.web.RequestHandler):
 		
 		page_info = safe_get(pages, page_name)
 		page_content = safe_get(page_info, 'content')
+		try:
+			title = page_info['title']['name'].split(' ')
+		except TypeError:
+			title = ''
 
 		if page_content is None and page != 'index.html':
 			self.clear()
@@ -54,6 +58,7 @@ class MainHandler(tornado.web.RequestHandler):
 		
 		options = {
 				'content': page_content,
+				'title': title,
 				'page_list': [pages[i]['title'] for i in pages]
 		}
 		
