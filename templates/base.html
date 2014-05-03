@@ -22,9 +22,11 @@
     <div id="mainBody">
       <div id="navigation" class="animated fadeInDown">
 	<a href="/">home</a>
+
 	{% for page in page_list %}
 	<a href="{{ page['link'] }}">{{ page['name'] }}</a>
 	{% end %}
+
 	<a href="https://twitter.com/MU_CECSC" target="new">twitter</a> 
 	<a href="mailto:stuco@miamicec.org">contact</a> 
       </div>
