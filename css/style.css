@@ -34,8 +34,7 @@ html{
 
 .frontPageTitleBox{
     position: fixed;
-    top:250px;
-    bottom:180px;
+    top:15%;
     font-family: 'Raleway', sans-serif;
     font-size: 72px;
     text-align: center;
