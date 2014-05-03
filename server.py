@@ -4,6 +4,7 @@ import tornado.ioloop
 import tornado.web
 import os
 import json
+from glob import glob
 
 pages = None
 
@@ -11,8 +12,13 @@ def load_pages():
 	global pages
 
 	pages = {}
-	with open('pages/who.json') as json_file:
-		pages['who'] = json.load(json_file)
+	for file_path in glob('pages/*'):
+		basename = os.path.basename(file_path)
+		file_name, extension = os.path.splitext(basename)
+		with open(file_path) as json_file:
+			pages[file_name] = json.load(json_file)
+	page_names = ', '.join(list(pages.keys()))
+	print('Loaded pages: \'{}\''.format(page_names))
 
 class MainHandler(tornado.web.RequestHandler):
 	def get(self, page='index.html'):
