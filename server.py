@@ -36,7 +36,11 @@ class MainHandler(tornado.web.RequestHandler):
 				'content': page_content
 		}
 		
-		self.render(page, **options)
+		if page == 'index.html':
+			self.render(page, **options)
+		else:
+			self.render('contents.html', **options)
+				
 		
 def safe_get(col, ind, default=None):
 	try:

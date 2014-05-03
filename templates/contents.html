@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block main_bocks %}
+<div id="container" class="animated fadeInDown">
+  {% for box in content %}
+  <div class="boxes">
+    <p class="boxTitle">{{ box['title'] }}</p>
+    <p class="boxText">{{ box['content'] }}</p>
+  </div>
+  
+  {% end %}
+</div>
+{% end %}
