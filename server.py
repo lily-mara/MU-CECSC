@@ -4,9 +4,11 @@ import tornado.ioloop
 import tornado.web
 import os
 import json
+import sys
 from glob import glob
 
 pages = None
+meta_settings = None
 
 def load_pages():
 	global pages
@@ -18,7 +20,22 @@ def load_pages():
 		with open(file_path) as json_file:
 			pages[file_name] = json.load(json_file)
 	page_names = "'" + "', '".join(list(pages.keys())) + "'"
-	print('Loaded pages: {}'.format(page_names))
+
+	load_info = 'Loaded pages: {}'.format(page_names)
+	print(load_info)
+	return load_info
+	
+def load_settings():
+	global meta_settings
+	
+	meta_settings = {}
+	try:
+		with open('settings.json') as json_file:
+			meta_settings = json.load(json_file)
+	except FileNotFoundError:
+		print('You need to create the file settings.json from')
+		print('the file settings.json.example')
+		sys.exit(1)
 
 class MainHandler(tornado.web.RequestHandler):
 	def get(self, page='index.html'):
@@ -30,7 +47,7 @@ class MainHandler(tornado.web.RequestHandler):
 		if page_content is None and page != 'index.html':
 			self.clear()
 			self.set_status(404)
-			self.finish("<html><body>That page does not exist.</body></html>")
+			self.finish('<html><body>That page does not exist.</body></html>')
 			return
 			
 		print(json.dumps(pages, indent = ' ' * 4))
@@ -46,6 +63,16 @@ class MainHandler(tornado.web.RequestHandler):
 
 		self.render('contents.html', **options)
 				
+
+class UpdateHandler(tornado.web.RequestHandler):
+	def post(self):
+		password = self.get_argument('pass')
+		if password == meta_settings['password']:
+			load_info = load_pages()
+			self.finish(load_info)
+		else:
+			self.finish('You do not have the proper permissions.')
+			
 		
 def safe_get(col, ind, default=None):
 	try:
@@ -59,6 +86,7 @@ def safe_get(col, ind, default=None):
 
 handlers = [
 		(r'/', MainHandler),
+		(r'/update', UpdateHandler),
 		(r'/(.*)', MainHandler)
 		]
 
@@ -71,6 +99,7 @@ settings = {
 application = tornado.web.Application(handlers, **settings)
 
 if __name__ == '__main__':
+	load_settings()
 	load_pages()
 	application.listen(4000)
 	tornado.ioloop.IOLoop.instance().start()
