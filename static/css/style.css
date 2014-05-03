@@ -8,7 +8,7 @@ html{
 
 #navigation{
     position:fixed;
-    top:10%;
+    top:5%;
     width:100%;
     margin-left: auto;
     margin-right: auto;
@@ -59,7 +59,7 @@ html{
     position: relative;
     width: 1200px;
     height: 360px;
-    margin: 13% auto 50px auto;
+    margin: 23% auto 50px auto;
     cursor:default;
 }
 
@@ -107,7 +107,7 @@ html{
     position: fixed;
     font-family: 'Raleway', sans-serif;
     font-size: 48px;
-    top:220px;
+    top:20%;
     left:50%;
     margin:0 0 0 -170px;
 }
@@ -157,7 +157,7 @@ p.boxText{
 #footer{
     position: absolute;
     bottom: 0px;
-    margin-bottom: -10%;
+    margin-bottom: -25%;
     background: rgba(0,0,0,0.45);
     width: 100%;
     height:80px;
