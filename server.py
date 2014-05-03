@@ -8,8 +8,15 @@ import json
 
 class MainHandler(tornado.web.RequestHandler):
 	def get(self, page='index.html'):
+		page_name = safe_get(page.split('.'), 0)
 		options = {}
 		self.render(page, **options)
+		
+def safe_get(col, ind, default=''):
+	try:
+		return col[ind]
+	except IndexError:
+		return default
 
 handlers = [
 		(r'/', MainHandler),
