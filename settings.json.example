@@ -1,3 +1,7 @@
 {
-    "password": "REPLACE with desired password for article update"
+    "password": "REPLACE with desired password for article update",
+    "pages": [
+	"who",
+	"about"
+    ]
 }

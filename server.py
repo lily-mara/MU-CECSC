@@ -5,7 +5,6 @@ import tornado.web
 import os
 import json
 import sys
-from glob import glob
 
 pages = None
 meta_settings = None
@@ -14,11 +13,11 @@ def load_pages():
 	global pages
 
 	pages = {}
-	for file_path in glob('pages/*'):
-		basename = os.path.basename(file_path)
-		file_name, extension = os.path.splitext(basename)
+	for basename in meta_settings['pages']:
+		file_path = os.path.join('pages', basename)
+		file_path += '.json'
 		with open(file_path) as json_file:
-			pages[file_name] = json.load(json_file)
+			pages[basename] = json.load(json_file)
 	page_names = "'" + "', '".join(list(pages.keys())) + "'"
 
 	load_info = 'Loaded pages: {}'.format(page_names)
