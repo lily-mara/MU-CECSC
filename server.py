@@ -88,13 +88,13 @@ handlers = [
 		(r'/', MainHandler),
 		(r'/update', UpdateHandler),
 		(r'/(.*)', MainHandler)
-		]
+]
 
 settings = {
 		'debug': True,
 		'static_path': os.path.join('static'),
 		'template_path': os.path.join('templates')
-		}
+}
 
 application = tornado.web.Application(handlers, **settings)
 
