@@ -7,12 +7,13 @@ import os
 import json
 
 class MainHandler(tornado.web.RequestHandler):
-	def get(self):
+	def get(self, page='index.html'):
 		options = {}
-		self.render('index.html', **options)
+		self.render(page, **options)
 
 handlers = [
-		(r'/', MainHandler)
+		(r'/', MainHandler),
+		(r'/(.*)', MainHandler)
 		]
 
 settings = {
