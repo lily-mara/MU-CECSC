@@ -71,6 +71,7 @@ class UpdateHandler(tornado.web.RequestHandler):
 		password = self.get_argument('pass')
 		if password == meta_settings['password']:
 			load_info = load_pages()
+			load_settings()
 			self.finish(load_info)
 		else:
 			self.finish('You do not have the proper permissions.')
