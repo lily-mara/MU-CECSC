@@ -18,14 +18,14 @@
 	 });
 	 	 
 	 function textIn() {
-		  $("#mecTexth1").fadeIn();
-		  $("#mecTexth2").fadeIn();
+		  $(".frontPageTitle").fadeIn();
+		  $(".frontPageTitle").fadeIn();
 		  $("#down").fadeIn();
 	 };
 	 
 	  function textOut() {
-		  $("#mecTexth1").fadeOut();
-		  $("#mecTexth2").fadeOut();
+		  $(".frontPageTitle").fadeOut();
+		  $(".frontPageTitle").fadeOut();
 		  $("#down").fadeOut();
 	 };
 
