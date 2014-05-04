@@ -13,7 +13,6 @@ file_path = os.path.dirname(os.path.realpath(__file__))
 
 def load_pages():
 	global pages
-	global file_path
 
 	pages = {}
 	for basename in meta_settings['pages']:
