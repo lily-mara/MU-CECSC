@@ -1,7 +1,7 @@
 FROM ubuntu:14.04
 
 RUN ["apt-get", "install", "-y", "curl", "python3", "build-essential", "python3-dev", "git", "nginx", "supervisor"]
-RUN ["curl", "https://bootstrap.pypa.io/get-pip.py", "|", "python3", "-"]
+RUN ["curl", "https://bootstrap.pypa.io/get-pip.py", "|", "python3 -"]
 RUN ["pip", "install", "tornado", "requests"]
 
 RUN ["mkdir", "/var/www"]
