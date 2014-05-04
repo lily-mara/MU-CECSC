@@ -18,7 +18,7 @@ def load_pages():
 	for basename in meta_settings['pages']:
 		json_file_path = os.path.join(file_path, 'pages', basename)
 		json_file_path += '.json'
-		with open(file_path) as json_file:
+		with open(json_file_path) as json_file:
 			pages[basename] = json.load(json_file)
 	page_names = "'" + "', '".join(list(pages.keys())) + "'"
 
