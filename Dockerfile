@@ -8,5 +8,3 @@ RUN ["mkdir", "/var/www"]
 
 ADD . /var/www/mu-cec/
 ADD supervisord.conf /etc/supervisor/supervisord.conf
-
-ENTRYPOINT ["supervisord"]
