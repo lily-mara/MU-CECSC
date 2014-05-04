@@ -8,4 +8,6 @@ RUN ["mkdir", "/var/www"]
 RUN ["git", "clone", "https://github.com/natemara/mu-cecsc", "/var/www/mu-cec"]
 RUN ["cp", "/var/www/mu-cec/settings.json.example", "/var/www/mu-cec/settings.json"]
 
+ENV PATH $PATH:/var/www/mu-cec/server.py
+
 ENTRYPOINT ["/var/www/mu-cec/server.py"]
