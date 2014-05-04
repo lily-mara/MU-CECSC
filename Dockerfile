@@ -6,6 +6,6 @@ RUN ["pip", "install", "tornado", "requests"]
 
 RUN ["mkdir", "/var/www"]
 
-ADD * /var/www/mu-cec/
+ADD ./* /var/www/mu-cec/
 
 ENTRYPOINT ["/var/www/mu-cec/server.py"]
