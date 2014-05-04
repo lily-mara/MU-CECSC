@@ -6,6 +6,9 @@ RUN ["pip", "install", "tornado", "requests"]
 
 RUN ["mkdir", "/var/www"]
 RUN ["git", "clone", "https://github.com/natemara/mu-cecsc", "/var/www/mu-cec"]
+
+RUN cd /var/www/mu-cec/ && git pull
+
 RUN ["cp", "/var/www/mu-cec/settings.json.example", "/var/www/mu-cec/settings.json"]
 
 ENTRYPOINT ["/var/www/mu-cec/server.py"]
