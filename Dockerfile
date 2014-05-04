@@ -9,5 +9,6 @@ RUN ["pip", "install", "tornado", "requests"]
 RUN ["mkdir", "/var/www"]
 
 ADD . /var/www/mu-cec/
+ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 CMD ["/usr/bin/supervisord", "-c", "/var/www/mu-cec/supervisord.conf"]
