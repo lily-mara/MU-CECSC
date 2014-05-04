@@ -9,12 +9,14 @@ import sys
 pages = None
 meta_settings = None
 
+file_path = os.path.dirname(os.path.realpath(__file__))
+
 def load_pages():
 	global pages
 
 	pages = {}
 	for basename in meta_settings['pages']:
-		file_path = os.path.join('pages', basename)
+		file_path = os.path.join(file_path, 'pages', basename)
 		file_path += '.json'
 		with open(file_path) as json_file:
 			pages[basename] = json.load(json_file)
@@ -29,7 +31,8 @@ def load_settings():
 	
 	meta_settings = {}
 	try:
-		with open('settings.json') as json_file:
+		settings_path = os.path.join(file_path, 'settings.json')
+		with open(settings_path) as json_file:
 			meta_settings = json.load(json_file)
 	except FileNotFoundError:
 		print('You need to create the file settings.json from')
