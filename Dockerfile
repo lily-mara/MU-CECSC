@@ -8,3 +8,5 @@ RUN ["mkdir", "/var/www"]
 
 ADD . /var/www/mu-cec/
 ADD supervisord.conf /etc/supervisor/supervisord.conf
+
+RUN ["supervisord", "-c", "/etc/supervisor/supervisord.conf"]
