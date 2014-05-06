@@ -10,4 +10,4 @@ RUN ["mkdir", "/var/www"]
 
 ADD . /var/www/mu-cec/
 
-CMD ["supervisord", "-c", "/var/www/mu-cec/supervisord.conf"]
+RUN ["supervisord", "-c", "/var/www/mu-cec/supervisord.conf"]
