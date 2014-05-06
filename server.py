@@ -97,7 +97,7 @@ handlers = [
 ]
 
 settings = {
-		'debug': True,
+		'debug': False,
 		'static_path': os.path.join('static'),
 		'template_path': os.path.join('templates')
 }
