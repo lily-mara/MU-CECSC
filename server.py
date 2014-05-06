@@ -98,8 +98,8 @@ handlers = [
 
 settings = {
 		'debug': False,
-		'static_path': os.path.join('static'),
-		'template_path': os.path.join('templates')
+		'static_path': os.path.join(file_path, 'static'),
+		'template_path': os.path.join(file_path, 'templates')
 }
 
 application = tornado.web.Application(handlers, **settings)
