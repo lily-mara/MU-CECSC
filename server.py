@@ -107,5 +107,5 @@ application = tornado.web.Application(handlers, **settings)
 if __name__ == '__main__':
 	load_settings()
 	load_pages()
-	application.listen(80)
+	application.listen(4000)
 	tornado.ioloop.IOLoop.instance().start()
