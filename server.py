@@ -64,5 +64,6 @@ APPLICATION = tornado.web.Application(HANDLERS, **SETTINGS)
 
 if __name__ == '__main__':
 	define('port', default=4000, type=int)
+	tornado.options.parse_command_line()
 	APPLICATION.listen(options.port)
 	tornado.ioloop.IOLoop.instance().start()
