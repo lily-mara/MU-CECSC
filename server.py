@@ -2,110 +2,67 @@
 import tornado.autoreload
 import tornado.ioloop
 import tornado.web
+from tornado.options import define, options
 import os
-import json
-import sys
 
-pages = None
-meta_settings = None
+from setup import load_pages
 
-file_path = os.path.dirname(os.path.realpath(__file__))
+PAGES = load_pages()
 
-def load_pages():
-	global pages
-
-	pages = {}
-	for basename in meta_settings['pages']:
-		json_file_path = os.path.join(file_path, 'pages', basename)
-		json_file_path += '.json'
-		with open(json_file_path) as json_file:
-			pages[basename] = json.load(json_file)
-	page_names = "'" + "', '".join(list(pages.keys())) + "'"
-
-	load_info = 'Loaded pages: {}'.format(page_names)
-	print(load_info)
-	return load_info
-	
-def load_settings():
-	global meta_settings
-	
-	meta_settings = {}
-	try:
-		settings_path = os.path.join(file_path, 'settings.json')
-		with open(settings_path) as json_file:
-			meta_settings = json.load(json_file)
-	except FileNotFoundError:
-		print('You need to create the file settings.json from')
-		print('the file settings.json.example')
-		sys.exit(1)
 
 class MainHandler(tornado.web.RequestHandler):
-	def get(self, page='index.html'):
-		page_name = safe_get(page.split('.'), 0)
-		
-		page_info = safe_get(pages, page_name)
-		page_content = safe_get(page_info, 'content')
-		try:
-			title = page_info['title']['name'].split(' ')
-		except TypeError:
-			title = ''
+	def get(self, page):
+		page_name = page.split('.')[0]
 
-		if page_content is None and page != 'index.html':
+		page_info = PAGES.get(page_name)
+
+		if page_info is None:
 			self.clear()
 			self.set_status(404)
 			self.finish('<html><body>That page does not exist.</body></html>')
 			return
-			
-		options = {
-				'content': page_content,
-				'title': title,
-				'page_list': [pages[i]['title'] for i in pages]
-		}
-		
-		if page == 'index.html':
-			self.render(page, **options)
+
+		page_content = page_info.get('content')
+		page_title = page_info.get('title')
+
+		if page_info is None:
+			self.clear()
+			self.set_status(404)
+			self.finish('<html><body>That page does not exist.</body></html>')
 			return
 
-		self.render('contents.html', **options)
-				
+		page_options = {
+			'content': page_content,
+			'title': page_title['name'].split(' '),
+			'page_list': [i['title'] for i in PAGES.values()]
+		}
 
-class UpdateHandler(tornado.web.RequestHandler):
-	def post(self):
-		password = self.get_argument('pass')
-		if password == meta_settings['password']:
-			load_settings()
-			load_info = load_pages()
-			self.finish(load_info)
-		else:
-			self.finish('You do not have the proper permissions.')
-			
-		
-def safe_get(col, ind, default=None):
-	try:
-		return col[ind]
-	except IndexError:
-		return default
-	except KeyError:
-		return default
-	except TypeError:
-		return default
+		self.render('contents.html', **page_options)
 
-handlers = [
-		(r'/', MainHandler),
-		(r'/update', UpdateHandler),
-		(r'/(.*)', MainHandler)
+
+class IndexHandler(tornado.web.RequestHandler):
+	def get(self):
+		page_options = {
+			'page_list': [i['title'] for i in PAGES.values()]
+		}
+
+		self.render('index.html', **page_options)
+
+
+HANDLERS = [
+	(r'/', IndexHandler),
+	(r'/(.*)', MainHandler)
 ]
 
-settings = {
-		'debug': False,
-		'static_path': os.path.join('static'),
-		'template_path': os.path.join('templates')
+SETTINGS = {
+	'debug': False,
+	'static_path': os.path.join('static'),
+	'template_path': os.path.join('templates')
 }
 
-application = tornado.web.Application(handlers, **settings)
+APPLICATION = tornado.web.Application(HANDLERS, **SETTINGS)
 
 if __name__ == '__main__':
-	load_settings()
-	load_pages()
-	application.listen(4000)
+	define('port', default=4000, type=int)
+	APPLICATION.listen(options.port)
 	tornado.ioloop.IOLoop.instance().start()
