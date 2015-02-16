@@ -4,7 +4,7 @@
     <meta http-equiv=”content-type” content=”text/xml; charset=utf-8” />
     <title>Miami University College of Engineering and Computing Student Council</title>
     <meta name="description" content="The Miami CEC Student Council was founded in 2012 by students at Miami University who are dedicated to promoting engineering and uniting students together.">
-    
+
     <link rel="stylesheet" type="text/css" href="{{ static_url('css/reset.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ static_url('css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ static_url('css/animate.css') }}">
@@ -12,10 +12,10 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ static_url('images/favicon.png') }}" />
 
 
-    
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
-    <script type="text/javascript" src="{{ static_url('js/myjs.js') }}"></script>      
-    
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ static_url('js/myjs.js') }}"></script>
+
     <style type="text/css">
       html{
       background: url( {{ static_url('images/bg.jpg') }} ) no-repeat center center fixed;
@@ -26,7 +26,7 @@
       }
     </style>
 
-    
+
   </head>
   <body>
 
@@ -38,19 +38,23 @@
 	<a href="{{ page['link'] }}">{{ page['name'] }}</a>
 	{% end %}
 
-	<a href="https://twitter.com/MU_CECSC" target="new">twitter</a> 
-	<a href="mailto:stuco@miamicec.org">contact</a> 
+	<a href="https://twitter.com/MU_CECSC" target="new">twitter</a>
+	<a href="mailto:stuco@miamicec.org">contact</a>
       </div>
 
       {% block main_bocks %}{% end %}
 
     </div>
-    
+
     <div class="footer"{% block footer_info %}{% end %}>
-      <p>&copy; 2014 Miami CEC Student Council</p>
+		<p>
+			<script type="text/javascript">
+				copyright = new Date();
+				update = copyright.getFullYear();
+				document.write("&copy; 2014-"+ update + " Miami CEC Student Advisory Council");
+			</script>
+		</p>
     </div>
-
-
 
   </body>
 </html>
